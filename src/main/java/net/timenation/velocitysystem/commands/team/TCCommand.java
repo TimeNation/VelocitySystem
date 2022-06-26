@@ -39,7 +39,7 @@ public class TCCommand {
                 }
             });
         } else {
-            context.getSource().sendMessage(Components.parse(I18n.format((Player) context.getSource(), I18n.format((Player) context.getSource(), "velocity.prefix.notify"), "velocity.messages.teamchat.notloggedin")));
+            context.getSource().sendMessage(Components.parse(I18n.format((Player) context.getSource(), I18n.format((Player) context.getSource(), "velocity.prefix.teamchat"), "velocity.messages.teamchat.notloggedin")));
         }
         return 1;
     }

@@ -40,7 +40,7 @@ public class LoginListener {
         }
 
         if (player.hasPermission("timenation.isinteam") && !TimeVelocityAPI.getInstance().getNotificationManager().hasNotificationEnabled(player.getUniqueId())) {
-            player.sendMessage(Components.parse(I18n.format(player, I18n.format(player, "velocity.prefix.notify"), "velocity.messages.teamchat.isloggedout")));
+            player.sendMessage(Components.parse(I18n.format(player, I18n.format(player, "velocity.prefix.teamchat"), "velocity.messages.teamchat.isloggedout")));
         }
     }
 }
