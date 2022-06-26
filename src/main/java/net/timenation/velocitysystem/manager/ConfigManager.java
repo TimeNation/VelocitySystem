@@ -49,14 +49,17 @@ public class ConfigManager {
     }
 
     private void initProperties() {
-        json.addProperty("prefix", "Test | ");
-        json.addProperty("maintenance", true);
-        json.addProperty("maintenance_protocol", "§4Wartungsarbeiten");
-        json.addProperty("maintenance_message", "§f§lDeinServer.net §8| §7Minecraft Netzwerk \n \n §8» §cDas Netzwerk befindet sich derzeit in Wartungsarbeiten§8.");
-        json.addProperty("motd.line1", "§f§lDeinServer.net §8| §7Minecraft Netzwerk");
-        json.addProperty("motd.line2", "  §8» §7Editiere die MOTD in der config.json§8!");
-        json.addProperty("motd.maintenance_line1", "§f§lDeinServer.net §8| §7Minecraft Netzwerk");
-        json.addProperty("motd.maintenance_line2", "  §8» §7Editiere die MOTD in der config.json§8!");
+        json.addProperty("prefix", "§8» <gradient:#32a852:#84c295><bold>TimeNation</bold></gradient> §8- <gray>");
+        json.addProperty("maintenance_protocol", "§4Only Administration, bitch");
+        json.addProperty("maintenance_message", "<gradient:#32a852:#84c295><bold>TimeNation</bold></gradient> <#6dbd84>» <gray>Strategie & PvP Netzwerk \\n \\n <dark_gray>» <red>Das Netzwerk befindet sich derzeit in Wartungsarbeiten<dark_gray>.");
+        json.addProperty("motd.line1", "<gradient:#32a852:#84c295><bold>TimeNation</bold></gradient> <#6dbd84>» <gray>Strategie & PvP Netzwerk <dark_gray>► <yellow>1.18.2");
+        json.addProperty("motd.line2", "  <gradient:#3dcc63:#5eeb83><bold>Online</bold> <#733129>● <gradient:#32a852:#84c295><bold>TimeNation v2</bold></gradient> <dark_gray>● <gradient:#a14035:#a65e56><bold>OUT NOW</bold></gradient>");
+        json.addProperty("motd.maintenance_line1", "<gradient:#32a852:#84c295><bold>TimeNation</bold></gradient> <#6dbd84>» <gray>Dev & Programmier Netzwerk <dark_gray>► <yellow>1.19");
+        json.addProperty("motd.maintenance_line2", "  <gradient:#a14035:#a65e56><bold>SOON</bold></gradient> <#733129>● <gray>Wir kommen wieder<dark_gray>, <gray>nur <#3ff270>besser<dark_gray>!");
+        json.addProperty("tablist.header", "\n   <gradient:#32a852:#84c295><bold>TimeNation</bold></gradient> <#6dbd84>» <gray>Strategie & PvP Netzwerk   \n <gray>Du bist mit <#67bf5a>{0} <gray>verbunden<dark_gray>. \n ");
+        json.addProperty("tablist.footer_one", " \n <gray>Trete unserer <#8089ed>Discord <gray>Community bei<dark_gray> \n <#8089ed>dc.timenation.net \n \n <#ba0f2e>● <#b55566>● ●");
+        json.addProperty("tablist.footer_two", " \n <gray>Unseren <#55bbfa>Twitter <gray>Account findest du unter \n <#55bbfa>twitter.com/@TimeNationNET \n \n <#b55566>● <#ba0f2e>● <#b55566>●");
+        json.addProperty("tablist.footer_three", " \n <gray>Derzeit sind <#d1ce80>{0} <gray>von <#ed3b3b>{1} <gray>Spielern \n <gray>mit dem Netzwerk verbunden<dark_gray>. \n \n <#b55566>● ● <#ba0f2e>●");
         save();
     }
 

@@ -14,7 +14,9 @@ import net.timenation.timevelocityapi.mysql.MySQL;
 import net.timenation.velocitysystem.commands.*;
 import net.timenation.velocitysystem.commands.admin.CloudCommand;
 import net.timenation.velocitysystem.commands.admin.ShutdownCommand;
+import net.timenation.velocitysystem.commands.admin.ToggleMaintenance;
 import net.timenation.velocitysystem.commands.team.NotificationCommand;
+import net.timenation.velocitysystem.commands.team.TCCommand;
 import net.timenation.velocitysystem.commands.team.TeamChatCommand;
 import net.timenation.velocitysystem.commands.team.punish.BanCommand;
 import net.timenation.velocitysystem.commands.team.punish.MuteCommand;
@@ -26,7 +28,7 @@ import net.timenation.velocitysystem.listener.ProxyPingListener;
 import net.timenation.velocitysystem.manager.ConfigManager;
 import net.timenation.velocitysystem.manager.PunishManager;
 import net.timenation.velocitysystem.manager.TablistManager;
-import org.slf4j.Logger;
+import net.timenation.velocitysystem.utils.TeamChatList;
 
 @Plugin(
         id = "velocitysystem",
@@ -43,6 +45,7 @@ public class VelocitySystem {
     private final MySQL mySQL;
     private final ConfigManager configManager;
     private final PunishManager punishManager;
+    private final TeamChatList teamChatList;
     private final String proxyPrefix;
 
     @Inject
@@ -52,6 +55,7 @@ public class VelocitySystem {
         this.mySQL = TimeVelocityAPI.getInstance().getMySQL();
         this.configManager = new ConfigManager();
         this.punishManager = new PunishManager(TimeVelocityAPI.getInstance().getMySQL());
+        this.teamChatList = new TeamChatList();
 
         this.proxyPrefix = configManager.getString("prefix");
     }
@@ -68,6 +72,7 @@ public class VelocitySystem {
         eventManager.register(this, new PlayerChatListener());
 
         commandManager.register(new TeamChatCommand().build());
+        commandManager.register(new TCCommand().build());
         commandManager.register(new BanCommand().build());
         commandManager.register(new UnbanCommand().build());
         commandManager.register(new MuteCommand().build());
@@ -77,7 +82,6 @@ public class VelocitySystem {
         commandManager.register(new CloudCommand().build());
         commandManager.register(new NotificationCommand().build());
         commandManager.register(new ToggleMaintenance().build());
-        commandManager.register(new ReportCommand().build());
         commandManager.register(commandManager.metaBuilder("hub").aliases("l", "lobby", "helikopter", "hubschrauber", "kampfhelikopter", "land_der_idioten", "ab_nach_berlin", "ab_in_den_urlaub").build(), new HubCommand());
         commandManager.register(commandManager.metaBuilder("ping").build(), new PingCommand());
         commandManager.register(commandManager.metaBuilder("join").build(), new JoinCommand());

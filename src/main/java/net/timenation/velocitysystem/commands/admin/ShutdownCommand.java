@@ -64,7 +64,7 @@ public class ShutdownCommand {
     private int executeInstantShutdownProxy(CommandContext<CommandSource> context) {
         context.getSource().sendMessage(Components.parse(I18n.format((Player) context.getSource(), "velocity.messages.shutdown")));
 
-        VelocitySystem.getInstance().getProxyServer().getAllPlayers().forEach(player -> player.disconnect(Components.parse(I18n.format(player, VelocitySystem.getInstance().getProxyPrefix(), "velocity.screen.shutdown.proxy"))));
+        VelocitySystem.getInstance().getProxyServer().getAllPlayers().forEach(player -> player.disconnect(Components.parse(I18n.format(player, "velocity.screen.shutdown.proxy"))));
         VelocitySystem.getInstance().getProxyServer().shutdown();
         return 1;
     }
@@ -72,7 +72,7 @@ public class ShutdownCommand {
     private int executeInstantShutdownNetwork(CommandContext<CommandSource> context) {
         context.getSource().sendMessage(Components.parse(I18n.format((Player) context.getSource(), "velocity.messages.shutdown")));
 
-        VelocitySystem.getInstance().getProxyServer().getAllPlayers().forEach(player -> player.disconnect(Components.parse(I18n.format(player, VelocitySystem.getInstance().getProxyPrefix(), "velocity.screen.shutdown.network"))));
+        VelocitySystem.getInstance().getProxyServer().getAllPlayers().forEach(player -> player.disconnect(Components.parse(I18n.format(player, "velocity.screen.shutdown.network"))));
         CloudAPI.getInstance().getCloudServiceManager().getAllCachedObjects().forEach(iCloudService -> iCloudService.shutdown());
         return 1;
     }
@@ -88,7 +88,7 @@ public class ShutdownCommand {
             switch (taskSecounds.get()) {
                 case 30, 25, 20, 15, 10, 5, 4, 3, 2, 1, 0 -> VelocitySystem.getInstance().getProxyServer().getAllPlayers().forEach(player -> player.showTitle(Title.title(Component.text("§c§l" + taskSecounds.get()), Components.parse(I18n.format(player, "velocity.title.shutdown.proxy", taskSecounds)))));
                 case -1 -> {
-                    VelocitySystem.getInstance().getProxyServer().getAllPlayers().forEach(player -> player.disconnect(Components.parse(I18n.format(player, VelocitySystem.getInstance().getProxyPrefix(), "velocity.screen.shutdown.proxy"))));
+                    VelocitySystem.getInstance().getProxyServer().getAllPlayers().forEach(player -> player.disconnect(Components.parse(I18n.format(player, "velocity.screen.shutdown.proxy"))));
                     VelocitySystem.getInstance().getProxyServer().shutdown();
                 }
             }
@@ -111,7 +111,7 @@ public class ShutdownCommand {
             switch (taskSecounds.get()) {
                 case 30, 25, 20, 15, 10, 5, 4, 3, 2, 1, 0 -> VelocitySystem.getInstance().getProxyServer().getAllPlayers().forEach(player -> player.showTitle(Title.title(Component.text("§c§l" + taskSecounds.get()), Components.parse(I18n.format(player, "velocity.title.shutdown.network", taskSecounds)))));
                 case -1 -> {
-                    VelocitySystem.getInstance().getProxyServer().getAllPlayers().forEach(player -> player.disconnect(Components.parse(I18n.format(player, VelocitySystem.getInstance().getProxyPrefix(), "velocity.screen.shutdown.network"))));
+                    VelocitySystem.getInstance().getProxyServer().getAllPlayers().forEach(player -> player.disconnect(Components.parse(I18n.format(player,  "velocity.screen.shutdown.network"))));
                     CloudAPI.getInstance().getCloudServiceManager().getAllCachedObjects().forEach(iCloudService -> iCloudService.shutdown());
                 }
             }

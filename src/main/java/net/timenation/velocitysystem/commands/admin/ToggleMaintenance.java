@@ -1,4 +1,4 @@
-package net.timenation.velocitysystem.commands;
+package net.timenation.velocitysystem.commands.admin;
 
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.context.CommandContext;
@@ -11,6 +11,7 @@ import eu.thesimplecloud.api.servicegroup.grouptype.ICloudProxyGroup;
 import net.timenation.timevelocityapi.TimeVelocityAPI;
 import net.timenation.timevelocityapi.manager.language.I18n;
 import net.timenation.timevelocityapi.utils.Components;
+import net.timenation.velocitysystem.VelocitySystem;
 
 import java.io.IOException;
 
@@ -31,7 +32,7 @@ public class ToggleMaintenance {
         if (iCloudProxyGroup.isInMaintenance()) {
             iCloudProxyGroup.setMaintenance(false);
             iCloudProxyGroup.update();
-            context.getSource().sendMessage(Components.parse(I18n.format((Player) context.getSource(), "velocity.messages.togglemaintenance.false")));
+            context.getSource().sendMessage(Components.parse(I18n.format((Player) context.getSource(), VelocitySystem.getInstance().getProxyPrefix(), "velocity.messages.togglemaintenance.false")));
             try {
                 TimeVelocityAPI.getInstance().getRabbitMQ().sendMessageToRabbtiMQ("minecraft_on");
             } catch (IOException ignored) { }
@@ -40,7 +41,7 @@ public class ToggleMaintenance {
 
         iCloudProxyGroup.setMaintenance(true);
         iCloudProxyGroup.update();
-        context.getSource().sendMessage(Components.parse(I18n.format((Player) context.getSource(), "velocity.messages.togglemaintenance.true")));
+        context.getSource().sendMessage(Components.parse(I18n.format((Player) context.getSource(), VelocitySystem.getInstance().getProxyPrefix(), "velocity.messages.togglemaintenance.true")));
         try {
             TimeVelocityAPI.getInstance().getRabbitMQ().sendMessageToRabbtiMQ("minecraft_maintenance");
         } catch (IOException ignored) { }
