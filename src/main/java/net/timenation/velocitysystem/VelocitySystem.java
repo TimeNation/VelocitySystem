@@ -46,7 +46,7 @@ public class VelocitySystem {
     private final ConfigManager configManager;
     private final PunishManager punishManager;
     private final TeamChatList teamChatList;
-    private final String proxyPrefix;
+    private String proxyPrefix;
 
     @Inject
     public VelocitySystem(ProxyServer proxyServer) {
@@ -56,14 +56,14 @@ public class VelocitySystem {
         this.configManager = new ConfigManager();
         this.punishManager = new PunishManager(TimeVelocityAPI.getInstance().getMySQL());
         this.teamChatList = new TeamChatList();
-
-        this.proxyPrefix = configManager.getString("prefix");
     }
 
     @Subscribe
     public void onProxyInitialization(ProxyInitializeEvent event) {
         EventManager eventManager = proxyServer.getEventManager();
         CommandManager commandManager = proxyServer.getCommandManager();
+
+        this.proxyPrefix = configManager.getString("prefix");
 
         new TablistManager();
 

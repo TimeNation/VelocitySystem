@@ -35,7 +35,7 @@ public class ConfigManager {
         if (!file.exists()) {
             try (PrintWriter writer = new PrintWriter(file)) {
                 writer.print(gson.toJson(json = new JsonObject()));
-                // initProperties();
+                initProperties();
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
